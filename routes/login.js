@@ -7,4 +7,8 @@ module.exports = function(app) {
     res.end(body);
   });
 
-};
+  app.get('/api/ping', function(req, res){
+    res.send("go kill yourself");
+  });
+
+};  
