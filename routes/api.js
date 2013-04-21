@@ -1,12 +1,5 @@
 module.exports = function(app) {
 
-  app.get('/', function(req, res){
-    var body = 'Welcome to our glorious web page.';
-    res.setHeader('Content-Type', 'text/plain');
-    res.setHeader('Content-Length', body.length);
-    res.end(body);
-  });
-
   app.get('/api/ping', function(req, res){
     var body = '{"message":"Pong"}';
     res.setHeader('Content-Type', 'application/json ');
@@ -26,7 +19,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/list', function(req, res){
-    var body = '{"024091":"Olive Garden", "124091":"Korea House", "051011":"Trulucks"}';
+    var body = '{"queues":[{"uniqueID": 001, "name": "Olive Garden"}, {"uniqueID": 002, "name": "Korea House"}, {"uniqueID": 003, "name": "Trulucks"}]';
     res.setHeader('Content-Type', 'application/json ');
     res.setHeader('Content-Length', body.length);
     res.end(body);
