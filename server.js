@@ -3,8 +3,10 @@ var http = require ('http');
 var app = express();
 var server = http.createServer(app);
 
+app.use(express.static(__dirname + '/public'));
+
 // Sets up the routes in the app
-require('./routes')(app);
+//require('./routes')(app);
 
 // Start server
 server.listen(8000);

@@ -19,7 +19,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/list', function(req, res){
-    var body = '{"queues":[{"uniqueID": 001, "name": "Olive Garden"}, {"uniqueID": 002, "name": "Korea House"}, {"uniqueID": 003, "name": "Trulucks"}]';
+    var body = '{"queues":[{"uniqueID": 001, "name": "Olive Garden"}, {"uniqueID": 002, "name": "Korea House"}, {"uniqueID": 003, "name": "Trulucks"}]}';
     res.setHeader('Content-Type', 'application/json ');
     res.setHeader('Content-Length', body.length);
     res.end(body);
