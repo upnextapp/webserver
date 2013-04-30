@@ -14,6 +14,7 @@ app.api = "ec2-54-244-184-198.us-west-2.compute.amazonaws.com/api";
 
 // set up static routes
 app.use(express.static(__dirname + '/public'));
+app.use(express.bodyParser());
 
 // set up routes in the routes/ folder
 require('./routes')(app);

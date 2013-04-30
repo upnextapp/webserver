@@ -4,20 +4,21 @@ var tw_num = "+18173857726";
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(sid, token);
+var express = require('express');
 
 module.exports = function(app) {
 
-  app.get('/api/twilio', function(req, res){
-    client.sms.messages.create({
-      to: '+19723222268',
-      from: tw_num,
-      body: "Hello World!"
-    },
-    function(error, message) {
-      if (error) {
-          console.log(error.message);
-      }
-    });
-  }); 
-
+  app.post('/api/twilio', function(req, res){
+      client.sms.messages.create({
+        to: '+1' + req.body.number,
+        from: tw_num,
+        body: "You said: " + req.body.message
+      },
+      function(error, message) {
+        if (error) {
+            console.log(error.message);
+        }
+      });
+      res.end("Form Submitted!");
+  });
 };

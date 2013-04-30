@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.end(body);
   });
 
-  app.get('/api/queue', function(req, res){
+  app.post('/api/queue', function(req, res){
     var payload = [];
     req.on('data', function(data){
       payload.push(data);
