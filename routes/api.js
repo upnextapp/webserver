@@ -14,7 +14,10 @@ module.exports = function(app) {
     });
     req.on('end', function(){
       console.log(payload.join(''));
-      res.send("Added to queue");
+      var body = '{"position":"1", "queuelength":"1"}';
+      res.setHeader('Content-Type', 'application/json ');
+      res.setHeader('Content-Length', body.length);
+      res.end(body);
     });
   });
 
