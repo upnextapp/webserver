@@ -13,19 +13,57 @@ module.exports = function(app) {
       payload.push(data);
     });
     req.on('end', function(){
-      console.log(payload.join(''));
-      var body = '{"position":"1", "queuelength":"1"}';
-      res.setHeader('Content-Type', 'application/json ');
-      res.setHeader('Content-Length', body.length);
-      res.end(body);
+      payload = JSON.parse(payload.join(''));
+      var phone = payload.phone;
+      var id = payload.uniqueID;
+      var pos;
+      var success;
+      app.db.q.findAndModify({
+        query : {uniqueID:id},
+        update: { $push:{queue:phone},
+                  $inc:{size:1}
+                },
+        new : true
+      }, function(err, doc){
+          if(err || doc.length === 0){
+            success = false;
+            console.log("Could not find business.");
+          }
+          else{
+            success = true;
+            pos = doc.size;
+            var body = '{ "success" : "' + success + '", "position" : "' + pos + '", "size" : "' + pos + '" }';
+            res.setHeader('Content-Type', 'application/json ');
+            res.setHeader('Content-Length', body.length);
+            res.end(body);
+          }
+        }
+      );
     });
   });
 
   app.get('/api/list', function(req, res){
-    var body = '{"queues":[{"uniqueID": 001, "name": "Olive Garden"}, {"uniqueID": 002, "name": "Korea House"}, {"uniqueID": 003, "name": "Trulucks"}]}';
-    res.setHeader('Content-Type', 'application/json ');
-    res.setHeader('Content-Length', body.length);
-    res.end(body);
+    app.db.q.find( function(err, doc){
+      var success;
+      if(err || doc.length === 0){
+        success = false;
+        console.log("No businesses found.");
+      }
+      else{
+        success = true;
+        var body = '{"queues" : [';
+        for(var i = 0; i < doc.length; i++){
+          body += '{"uniqueID":"' + doc[i].uniqueID + '",';
+          body += '"size":"' + doc[i].size + '",';
+          if (i === doc.length-1) body += '"name":"' + doc[i].name + '"}]}';
+          else body += '"name":"' + doc[i].name + '"},';
+        }
+        res.setHeader('Content-Type', 'application/json ');
+        res.setHeader('Content-Length', body.length);
+        res.end(body);
+      }
+    });
+    
   });
 
 };  

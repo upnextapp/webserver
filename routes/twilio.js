@@ -11,13 +11,13 @@ module.exports = function(app) {
     client.sms.messages.create({
       to: '+19723222268',
       from: tw_num,
-      body: req.body.message
+      body: "Hello World!"
     },
     function(error, message) {
       if (error) {
           console.log(error.message);
       }
     });
-  });
+  }); 
 
 };
