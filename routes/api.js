@@ -33,8 +33,10 @@ module.exports = function(app) {
             success = true;
             pos = doc.size;
             var body = '{ "success" : "' + success + '", "position" : "' + pos + '", "size" : "' + pos + '" }';
-            res.setHeader('Content-Type', 'application/json ');
-            res.setHeader('Content-Length', body.length);
+            res.writeHead(200, {
+              'Content-Type': 'application/json',
+              'Content-Length': body.length
+            });
             res.end(body);
           }
         }
