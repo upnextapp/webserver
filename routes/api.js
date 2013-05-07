@@ -7,8 +7,7 @@ module.exports = function(app) {
     res.end(body);
   });
 
-  app.post('/api/queue', function(req, res){4
-    console.log("got queue request");
+  app.post('/api/queue', function(req, res){
     var phone = req.body.phone;
     var id = req.body.uniqueID;
     var pos;
@@ -36,46 +35,6 @@ module.exports = function(app) {
         }
       }
     );
-
-
-
-    /*
-    req.on('data', function(data){
-      payload.push(data);
-      console.log("DATA: " + data);
-    });
-    req.on('end', function(){
-      console.log("PAYLOAD: " + payload);
-      payload = JSON.parse(payload.join(''));
-      var phone = payload.phone;
-      var id = payload.uniqueID;
-      var pos;
-      var success;
-      app.db.q.findAndModify({
-        query : {uniqueID:id},
-        update: { $push:{queue:phone},
-                  $inc:{size:1}
-                },
-        new : true
-      }, function(err, doc){
-          if(err || doc.length === 0){
-            success = false;
-            console.log("Could not find business.");
-          }
-          else{
-            success = true;
-            pos = doc.size;
-            var body = '{ "success" : "' + success + '", "position" : "' + pos + '", "size" : "' + pos + '" }';
-            res.writeHead(200, {
-              'Content-Type': 'application/json',
-              'Content-Length': body.length
-            });
-            res.end(body);
-          }
-        }
-      );
-    });
-    */
   });
 
   app.get('/api/list', function(req, res){
