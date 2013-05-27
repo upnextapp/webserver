@@ -17,8 +17,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 
 // set up routes in the routes/ folder
+// all the js files in routes
 require('./routes')(app);
 
 // start server
-server.listen(8000);
+// aws -> 80 default http connection
+// sudo nohup node server.js ------> log in as admin to run for AWS
+server.listen(80);
 console.log('Listening on port 8000');
