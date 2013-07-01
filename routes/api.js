@@ -61,8 +61,8 @@ module.exports = function(app) {
     
   });
   
-  app.get('/api/queue/business', function(req, res){
-  var body = '{"message":"working on it."}';
+  app.get('/api/business', function(req, res){
+	var body = '{"message":"working on it."}';
     res.setHeader('Content-Type', 'application/json ');
     res.setHeader('Content-Length', body.length);
     res.end(body);
