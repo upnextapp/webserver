@@ -61,11 +61,43 @@ module.exports = function(app) {
     
   });
   
-  app.get('/api/business', function(req, res){
+  app.get('/api/list/business', function(req, res){
 	var body = '{"message":"working on it."}';
     res.setHeader('Content-Type', 'application/json ');
     res.setHeader('Content-Length', body.length);
     res.end(body);
   });
+  
+  /*
+  app.post('/api/dequeue/', function(req,res){
+	var phone = req.body.phone;
+    var id = req.body.uniqueID;
+    var pos;
+    var success;
+	app.db.q.findAndModify({
+      query : {uniqueID:id},
+      update: { $push:{queue:phone},
+                $inc:{size:1}
+              },
+      new : true
+    }, function(err, doc){
+        if(err || doc.length === 0){
+          success = false;
+          console.log("Could not find business.");
+        }
+        else{
+          success = true;
+          pos = doc.size;
+          var body = '{ "success" : "' + success + '", "position" : "' + pos + '", "size" : "' + pos + '" }';
+          res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Content-Length': body.length
+          });
+          res.end(body);
+        }
+      }
+    );
+  }
+  */
 
 };  
