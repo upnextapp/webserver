@@ -62,7 +62,11 @@ module.exports = function(app) {
   });
   
  
-  app.get('/testing', function(req, res){
+  app.post('/testing', function(req, res){
+	var userEmail = req.body.email;
+	var userPassword = req.body.password;
+	console.log(userEmail);
+	console.log(userPasword);
 	app.db.collection('accounts').find( function(err, doc){
 		var success;
 		if(err || doc.length === 0){
