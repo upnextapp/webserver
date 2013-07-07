@@ -61,7 +61,7 @@ module.exports = function(app) {
     
   });
   
-  app.get('/test', function(req, res){
+  app.get('/testing', function(req, res){
 	app.db.collection('accounts').find( function(err, doc){
 		var success;
 		if(err || doc.length === 0){
