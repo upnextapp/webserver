@@ -61,6 +61,7 @@ module.exports = function(app) {
     
   });
   
+  /*
   app.get('/testing', function(req, res){
 	app.db.collection('accounts').find( function(err, doc){
 		var success;
@@ -81,7 +82,7 @@ module.exports = function(app) {
 		}
 	});
   });
-  
+  */
   /*
   app.get('/api/signin', function(req,res){
 	var userEmail = req.body.email;
