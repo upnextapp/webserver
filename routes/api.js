@@ -61,6 +61,27 @@ module.exports = function(app) {
     
   });
   
+  app.get('/test', function(req, res){
+	app.db.collection('accounts').find( function(err, doc){
+		var success;
+		if(err || doc.length === 0){
+			success = false;
+			console.log("nope");
+		}
+		else {
+			success = true;
+			var body = '{"accounts" : [';
+			for(var i =0; i<doc.length; i++){
+				body += '{"email":"' + doc[i].email + '",';
+				body += '"password":"' + doc[i].password + '"}]}';
+			}
+			res.setHeader('Content-Type', 'application/json ');
+			res.setHeader('Content-Length', body.length);
+			res.end(body);
+		}
+	});
+  });
+  
   app.get('/api/signin', function(req,res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
