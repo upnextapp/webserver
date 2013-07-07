@@ -99,5 +99,26 @@ module.exports = function(app) {
     );
   }
   */
+  app.post('api/signin', function(req,res){
+	var userEmail = req.body.email;
+	var userPassword = req.body.password;
+	var success;
+	app.db.accounts.find({
+	email:userEmail, password:userPassword
+	}), function(err, doc){
+		  if(err || doc.legnth === 0){
+		    success = false;
+		    console.log("Could not locate user.");
+		  }
+		  else {
+		    success = true;
+			var body = '{"sucess" : "' + success + '"}';
+			res.writenHead(200, {
+				'Content-Type': 'application/json',
+				'Content-Length': body.length
+			});
+		  }
+	}
+  }
 
 };  

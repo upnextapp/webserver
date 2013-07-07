@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <script language = "javascript">
+  function validateUser() {
+	var userEmail = document.getElementById("email");
+	var userPassword = document.getElementById("password");
+	$.post("www.uhpnext.com/api/signin", 
+	{
+		email: userEmail,
+		password: userPassword
+	});
+  }
+  </script>
   <title>uhpNext - Home</title>
 </head>
 <!-- styles -->
@@ -62,9 +73,7 @@
 				<li><a href="#">PRICING</a></li>
 				<li><a href="#">TESTIMONY</a></li>
 				<!-- Button to trigger modal -->				
-				<li><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">SIGN IN</a></li>
-				
-				
+				<li><a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">SIGN IN</a></li>								
 			</ul>
 			<h3><a href="./index.html">UhpNext</a></h3>
 		</div>
@@ -75,14 +84,14 @@
 			<h3 class="form-signin-heading" align="center">Welcome Back!</h2>			
 		  </div>
 		  <div class="modal-body">
-			  <form class="form-signin"  method="GET">				
+			  <form class="form-signin" name="signin"  method="POST" action="">				
 				<input id="email" type="text" class="input-block-level" placeholder="Email address">
 				<br>
 				<input id="password" type="password" class="input-block-level" placeholder="Password">			
 				 <label id="remember" class="checkbox">				 
 				  <input type="checkbox" value="remember-me"> Remember me </input>
 				</label>						 			 
-				<a class="btn btn-large btn-primary" type="submit" href="./api/list">Sign In</a>
+				<a class="btn btn-large btn-primary" type="submit" onClick="validateUser()">Sign In</a>
 				<!--<button class="btn btn-large" data-dismiss="modal" aria-hidden="true" type="reset">Close</button>-->
 				<button class="btn btn-large" type="reset">Clear</button>				
 			  </form>
@@ -137,6 +146,7 @@
 	</div> <!-- /container -->
 	<!-- javascript -->
 	<!-- placed at the end for faster page load -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10/jquery.min.js"></script>
 	<script src="http://twitter.github.io/bootstrap/assets/js/jquery.js"></script>
 	<script src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
     <script src="http://twitter.github.io/bootstrap/assets/js/bootstrap-alert.js"></script>
