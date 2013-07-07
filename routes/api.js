@@ -61,6 +61,28 @@ module.exports = function(app) {
     
   });
   
+  app.get('/api/signin', function(req,res){
+	var userEmail = req.body.email;
+	var userPassword = req.body.password;
+	var success;
+	app.db.accounts.find({
+	  email:userEmail, 
+	  password:userPassword
+	}, function(err, doc){
+		  if(err || doc.legnth === 0){
+		    success = false;
+		    console.log("Could not locate user.");
+		  }
+		  else {
+		    success = true;			
+			var body = '{"sucess" : "' + success + '"}';
+			res.setHeader('Content-Type', 'application/json ');
+			res.setHeader('Content-Length', body.length);
+			res.end(body);
+		  }
+	});
+  });
+  
   app.get('/api/list/business', function(req, res){
 	var body = '{"message":"working on it."}';
     res.setHeader('Content-Type', 'application/json ');
@@ -99,25 +121,6 @@ module.exports = function(app) {
     );
   }
   */
-  app.get('/api/signin', function(req,res){
-	var userEmail = req.body.email;
-	var userPassword = req.body.password;
-	var success;
-	app.db.accounts.find({
-	email:userEmail, password:userPassword
-	}), function(err, doc){
-		  if(err || doc.legnth === 0){
-		    success = false;
-		    console.log("Could not locate user.");
-		  }
-		  else {
-		    success = true;			
-			var body = '{"sucess" : "' + success + '"}';
-			res.setHeader('Content-Type', 'application/json ');
-			res.setHeader('Content-Length', body.length);
-			res.end(body);
-		  }
-	}
-  });
+  
 
 };  
