@@ -75,8 +75,9 @@ module.exports = function(app) {
 			console.log("nope");
 		}
 		else {
-			success = true;			
-			window.open("http://www.uhpnext.com/home.html");
+			success = true;
+			var open = require('open');
+			open("http://www.uhpnext.com/home.html");
 			var body = '{"accounts" : [';
 			for(var i =0; i<doc.length; i++){
 				body += '{"email":"' + doc[i].email + '",';
