@@ -117,6 +117,7 @@ module.exports = function(app) {
 				'Content-Type': 'application/json',
 				'Content-Length': body.length
 			});
+			res.end(body);
 		  }
 	}
   });
