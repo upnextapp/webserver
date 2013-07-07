@@ -112,7 +112,7 @@ module.exports = function(app) {
 		  }
 		  else {
 		    success = true;
-			var url = "www.uhpnext.com/home.html";
+			var url = "www.uhpnext.com/about.html";
 			window.location = url;
 			window.open(url);
 			var body = '{"sucess" : "' + success + '"}';
