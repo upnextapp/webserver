@@ -66,7 +66,7 @@ module.exports = function(app) {
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
 	console.log(userEmail);
-	console.log(userPasword);
+	console.log(userPassword);
 	app.db.collection('accounts').find( function(err, doc){
 		var success;
 		if(err || doc.length === 0){
