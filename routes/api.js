@@ -99,7 +99,7 @@ module.exports = function(app) {
     );
   }
   */
-  app.get('/api/signin', function(req,res){
+  app.post('/api/signin', function(req,res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
 	var success;
