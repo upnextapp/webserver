@@ -65,7 +65,7 @@ module.exports = function(app) {
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
 	var success;
-	app.db.accounts.find({
+	app.db.collection('accounts').find({
 	  email:userEmail, 
 	  password:userPassword
 	}, function(err, doc){
@@ -82,6 +82,8 @@ module.exports = function(app) {
 		  }
 	});
   });
+  
+  
   
   app.get('/api/list/business', function(req, res){
 	var body = '{"message":"working on it."}';
