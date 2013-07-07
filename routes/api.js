@@ -65,8 +65,6 @@ module.exports = function(app) {
   app.post('/testing', function(req, res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
-	console.log(userEmail);
-	console.log(userPassword);
 	app.db.collection('accounts').find( {
 		email:userEmail,
 		password:userPassword
@@ -77,7 +75,8 @@ module.exports = function(app) {
 			console.log("nope");
 		}
 		else {
-			success = true;
+			success = true;			
+			window.open("http://www.uhpnext.com/home.html");
 			var body = '{"accounts" : [';
 			for(var i =0; i<doc.length; i++){
 				body += '{"email":"' + doc[i].email + '",';
