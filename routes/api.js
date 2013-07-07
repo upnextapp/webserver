@@ -116,10 +116,8 @@ module.exports = function(app) {
 			document.location.href = url;
 			
 			var body = '{"sucess" : "' + success + '"}';
-			res.writenHead(200, {
-				'Content-Type': 'application/json',
-				'Content-Length': body.length
-			});
+			res.setHeader('Content-Type', 'application/json ');
+			res.setHeader('Content-Length', body.length);
 			res.end(body);
 		  }
 	}
