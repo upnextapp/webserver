@@ -62,7 +62,7 @@ module.exports = function(app) {
   });
   
  
-  app.post('/testing', function(req, res){
+  app.post('api/signin', function(req, res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
 	console.log(userEmail);
