@@ -112,9 +112,9 @@ module.exports = function(app) {
 		  }
 		  else {
 		    success = true;
-			var url = "www.uhpnext.com/about.html";
-			window.location = url;
-			window.open(url);
+			var url = "www.uhpnext.com/home.html";
+			document.location.href = url;
+			
 			var body = '{"sucess" : "' + success + '"}';
 			res.writenHead(200, {
 				'Content-Type': 'application/json',
