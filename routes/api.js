@@ -82,6 +82,7 @@ module.exports = function(app) {
 	});
   });
   
+  /*
   app.get('/api/signin', function(req,res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
@@ -105,7 +106,7 @@ module.exports = function(app) {
   });
   
   
-  
+  */
   app.get('/api/list/business', function(req, res){
 	var body = '{"message":"working on it."}';
     res.setHeader('Content-Type', 'application/json ');
