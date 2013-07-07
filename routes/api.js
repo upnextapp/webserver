@@ -99,7 +99,7 @@ module.exports = function(app) {
     );
   }
   */
-  app.post('/api/signin', function(req,res){
+  app.get('/api/signin', function(req,res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
 	var success;
@@ -111,10 +111,7 @@ module.exports = function(app) {
 		    console.log("Could not locate user.");
 		  }
 		  else {
-		    success = true;
-			var url = "www.uhpnext.com/home.html";
-			document.location.href = url;
-			
+		    success = true;			
 			var body = '{"sucess" : "' + success + '"}';
 			res.setHeader('Content-Type', 'application/json ');
 			res.setHeader('Content-Length', body.length);
