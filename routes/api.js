@@ -78,6 +78,7 @@ module.exports = function(app) {
 			success = true;
 			var open = require('open');
 			open("http://www.uhpnext.com/home.html");
+			/*
 			var body = '{"accounts" : [';
 			for(var i =0; i<doc.length; i++){
 				body += '{"email":"' + doc[i].email + '",';
@@ -86,6 +87,7 @@ module.exports = function(app) {
 			res.setHeader('Content-Type', 'application/json ');
 			res.setHeader('Content-Length', body.length);
 			res.end(body);
+			*/
 		}
 	});
   });
