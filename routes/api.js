@@ -73,13 +73,21 @@ module.exports = function(app) {
 		if(err || doc.length === 0){
 			success = false;
 			console.log("nope");
+			res.writeHead(400);
 		}
 		else {
 			success = true;
 			console.log("this is working so far");
-			var open = require('open');
-			open("http://www.uhpnext.com/home.html");
-			console.log("opening home.html");
+			var body = success;
+			res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Content-Length': body.length
+			});
+			//res.end(body);
+			res.redirect('./home.html');
+			//var open = require('open');
+			//open("http://www.uhpnext.com/home.html");
+			//console.log("opening home.html");
 			/*
 			var body = '{"accounts" : [';
 			for(var i =0; i<doc.length; i++){
