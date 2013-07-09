@@ -86,7 +86,7 @@ module.exports = function(app) {
 			});
 			*/
 			//res.end(body);
-			res.redirect('./home.html');
+			res.redirect('www.uhpnext.com/home.html');
 			//var open = require('open');
 			//open("http://www.uhpnext.com/home.html");
 			//console.log("opening home.html");
