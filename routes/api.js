@@ -79,10 +79,12 @@ module.exports = function(app) {
 			success = true;
 			console.log("this is working so far");
 			var body = success;
+			/*
 			res.writeHead(200, {
             'Content-Type': 'application/json',
             'Content-Length': body.length
 			});
+			*/
 			//res.end(body);
 			res.redirect('./home.html');
 			//var open = require('open');
