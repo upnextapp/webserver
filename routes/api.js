@@ -9,6 +9,7 @@ module.exports = function(app) {
 
   app.post('/api/queue', function(req, res){
     var phone = req.body.phone;
+	
     var id = req.body.uniqueID;
     var pos;
     var success;
@@ -61,7 +62,6 @@ module.exports = function(app) {
     
   });
   
- 
   app.post('/testing', function(req, res){
 	var userEmail = req.body.email;
 	var userPassword = req.body.password;
@@ -167,6 +167,36 @@ module.exports = function(app) {
     );
   }
   */
+  
+  app.post('/api/dequeue', function(req, res){
+    var phone = req.body.phone;	
+    var id = req.body.uniqueID;
+    var pos;
+    var success;
+    app.db.q.findAndModify({
+      query : {uniqueID:id},
+      update: { $pop:{queue:phone},
+                $inc:{size:1}
+              },
+      new : true
+    }, function(err, doc){
+        if(err || doc.length === 0){
+          success = false;
+          console.log("Could not find business.");
+        }
+        else{
+          success = true;
+          pos = doc.size;
+          var body = '{ "success" : "' + success + '", "position" : "' + pos + '", "size" : "' + pos + '" }';
+          res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Content-Length': body.length
+          });
+          res.end(body);
+        }
+      }
+    );
+  });
   
 
 };  
