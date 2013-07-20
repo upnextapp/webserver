@@ -176,7 +176,7 @@ module.exports = function(app) {
     app.db.q.findAndModify({
       query : {uniqueID:id},
       update: { $pop:{queue:phone},
-                $inc:{size:1}
+                $inc:{size:-1}
               },
       new : true
     }, function(err, doc){
