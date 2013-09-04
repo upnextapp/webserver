@@ -167,7 +167,7 @@ module.exports = function(app) {
     );
   }
   */
-  
+  //general dequeue api... need to split between business and customer.
   app.post('/api/dequeue', function(req, res){
     var phone = req.body.phone;	
     var id = req.body.uniqueID;
