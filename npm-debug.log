@@ -1,0 +1,59 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'nohup' ]
+2 info using npm@1.3.11
+3 info using node@v0.11.8-pre
+4 warn package.json backbone@1.0.0 No repository field.
+5 warn package.json mongo@0.1.0 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'nohup', null ]
+8 verbose cache add name=undefined spec="nohup" args=["nohup",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'nohup',
+9 verbose parsed url   path: 'nohup',
+9 verbose parsed url   href: 'nohup' }
+10 silly lockFile ed24891d-nohup nohup
+11 verbose lock nohup /Users/Jojo/.npm/ed24891d-nohup.lock
+12 silly lockFile ed24891d-nohup nohup
+13 silly lockFile ed24891d-nohup nohup
+14 verbose addNamed [ 'nohup', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 4b8778b8-nohup nohup@
+17 verbose lock nohup@ /Users/Jojo/.npm/4b8778b8-nohup.lock
+18 silly addNameRange { name: 'nohup', range: '*', hasData: false }
+19 verbose url raw nohup
+20 verbose url resolving [ 'https://registry.npmjs.org/', './nohup' ]
+21 verbose url resolved https://registry.npmjs.org/nohup
+22 info trying registry request attempt 1 at 00:00:36
+23 http GET https://registry.npmjs.org/nohup
+24 http 404 https://registry.npmjs.org/nohup
+25 silly registry.get cb [ 404,
+25 silly registry.get   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+25 silly registry.get     date: 'Mon, 09 Sep 2013 05:00:36 GMT',
+25 silly registry.get     'content-type': 'application/json',
+25 silly registry.get     'content-length': '52',
+25 silly registry.get     'cache-control': 'must-revalidate' } ]
+26 silly lockFile 4b8778b8-nohup nohup@
+27 silly lockFile 4b8778b8-nohup nohup@
+28 error 404 'nohup' is not in the npm registry.
+28 error 404 You should bug the author to publish it
+28 error 404
+28 error 404 Note that you can also install from a
+28 error 404 tarball, folder, or http url, or git url.
+29 error System Darwin 12.4.1
+30 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "nohup"
+31 error cwd /Users/Jojo/Desktop/upnext/webserver
+32 error node -v v0.11.8-pre
+33 error npm -v 1.3.11
+34 error code E404
+35 verbose exit [ 1, true ]
